@@ -47,14 +47,16 @@ df = pd.DataFrame.from_dict(data, orient='columns').reset_index(drop=True)
 
 def user_input_features():
     P_2_min = st.sidebar.slider('P_2_min', -1.0, 1.0, 0.5)
+    P_2_last = st.sidebar.slider('P_2_last', 0.0, 1.0, 0.6)
     B_1_last = st.sidebar.slider('B_1_last', -1.5, 1.5, 0.1)
     D_44_max = st.sidebar.slider('D_44_max', 0.0, 3.5, 0.2)
     B_2_last = st.sidebar.slider('B_2_last', 0.0, 1.0, 0.6)
-    return P_2_min, B_1_last, D_44_max, B_2_last
+    return P_2_min,P_2_last , B_1_last, D_44_max, B_2_last
 
 
-P_2_min, B_1_last, D_44_max, B_2_last = user_input_features()
+P_2_min,P_2_last, B_1_last, D_44_max, B_2_last = user_input_features()
 df["P_2_min"] = P_2_min
+df["P_2_last"] = P_2_last
 df["B_1_last"] = B_1_last
 df["D_44_max"] = D_44_max
 df["B_2_last"] = B_2_last
